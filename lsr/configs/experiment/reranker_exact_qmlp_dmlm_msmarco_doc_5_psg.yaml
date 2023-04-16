@@ -1,0 +1,32 @@
+# @package _global_
+defaults:
+  - ../dataset@eval_dataset: msmarco_doc_pairs
+  - override /dataset@train_dataset: msmarco_doc_triplets
+  - override /loss: triplet_distil_kl
+  - override /model: exact_reranker_qmlp_dmlm_long
+exp_name: reranker_exact_qmlp_dmlm_msmarco_doc_ce_5_psg
+train_dataset:
+  num_psg: 5
+eval_dataset:
+  num_psgs: 5
+  run_path: "outputs/qmlp_dmlm_distil_sentence_transformer_kl_l1_0.0001/msmarco_doc/run_max_score_5.trec"
+training_arguments: 
+  per_device_train_batch_size: 16
+  max_steps: 150000
+  gradient_accumulation_steps: 1
+  # dataset@eval_dataset: msmarco_rerank
+data_collator:
+  _target_: lsr.datasets.multi_psgs_triplets.MutiPSGsTripletsBatching
+  tokenizer: ${tokenizer}
+  
+eval_collator: 
+  _target_: lsr.datasets.multi_psgs_pairs.MutiPSGsPairsBatching
+  tokenizer: ${tokenizer}
+
+trainer: 
+  eval_collator: ${eval_collator}
+  eval_dataset: ${eval_dataset}
+
+wandb:
+  setup:
+    project: lsr-framework-phrase

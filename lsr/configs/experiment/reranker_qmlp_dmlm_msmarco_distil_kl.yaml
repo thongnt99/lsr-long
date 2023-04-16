@@ -1,0 +1,23 @@
+# @package _global_
+defaults:
+  - ../dataset@eval_dataset: msmarco_rerank
+  - override /dataset@train_dataset: msmarco_distil_nils 
+  - override /loss: triplet_distil_kl
+  - override /model: reranker_qmlp_dmlm
+exp_name: reranker_qmlp_dmlm_msmarco_distil_kl
+training_arguments: 
+  per_device_train_batch_size: 64
+  max_steps: 150000
+  gradient_accumulation_steps: 1
+  #dataset@eval_dataset: msmarco_rerank
+eval_collator: 
+  _target_: lsr.datasets.rerank_collator.RerankCollator
+  tokenizer: ${tokenizer}
+  q_max_length: ${query_max_length}
+  d_max_length: ${doc_max_length}
+trainer: 
+  eval_collator: ${eval_collator}
+  eval_dataset: ${eval_dataset}
+wandb:
+  setup:
+    project: lsr-framework-phrase
