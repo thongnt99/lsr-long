@@ -1,0 +1,7 @@
+_target_: lsr.models.sdm_reranker_long.DualSparseEncoder
+query_encoder:
+  _target_: lsr.models.TransformerMLPSparseEncoder
+  model_name_or_dir: distilbert-base-uncased
+doc_encoder:
+  _target_: lsr.models.TransformerMLMSparseEncoder
+  model_name_or_dir: distilbert-base-uncased

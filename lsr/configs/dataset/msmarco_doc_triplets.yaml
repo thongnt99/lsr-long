@@ -1,0 +1,5 @@
+_target_: lsr.datasets.multi_psgs_triplets.MultiPSGsTriplets
+query_path: "data/msmarco_doc/msmarco-doctrain-queries.tsv"
+collection_path: "data/msmarco_doc/collection_psgs.tsv"
+triplet_path: "data/msmarco_doc/train_triplets.tsv"
+num_psg: 1
