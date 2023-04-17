@@ -137,7 +137,7 @@ class DualSparseEncoder(nn.Module):
         if not Path(model_dir_or_name).is_dir():
             from huggingface_hub import snapshot_download
             try:
-                snapshot_download(repo_id="lsr42/{model_dir_or_name}",
+                snapshot_download(repo_id=model_dir_or_name,
                                   local_dir=model_dir_or_name)
             except:
                 raise Exception(
