@@ -72,18 +72,21 @@ class DualSparseEncoder(nn.Module):
         for wsize in self.window_sizes:
             score_matrix = trans_matrix
             for idx in range(1, wsize):
-                score_matrix = score_matrix[:, :-1, :-1] + trans_matrix[:, idx:, idx:]
+                score_matrix = score_matrix[:, :-1,
+                                            :-1] + trans_matrix[:, idx:, idx:]
             score = score_matrix.max(dim=2).values.sum(dim=1)
             all_scores.append(score)
 
         prox_scores = trans_matrix
         for idx in range(1, self.proximity):
-            prox_scores = torch.max(prox_scores[:, :, :-1], trans_matrix[:, :, idx:])
+            prox_scores = torch.max(
+                prox_scores[:, :, :-1], trans_matrix[:, :, idx:])
         # unorder matching: is the same as ordered matching with n_gram=1
         for wsize in self.window_sizes[1:]:
             score_matrix = prox_scores
             for idx in range(1, wsize):
-                score_matrix = score_matrix[:, :-1, :] + prox_scores[:, idx:, :]
+                score_matrix = score_matrix[:, :-
+                                            1, :] + prox_scores[:, idx:, :]
             score = score_matrix.max(dim=2).values.sum(dim=1)
             all_scores.append(score)
         all_scores = torch.stack(all_scores, dim=1)
@@ -91,7 +94,7 @@ class DualSparseEncoder(nn.Module):
         max_psg_scores = []
         for idx in range(len(psg_offset) - 1):
             max_psg_scores.append(
-                all_scores[psg_offset[idx] : psg_offset[idx + 1]].max(dim=0).values
+                all_scores[psg_offset[idx]                           : psg_offset[idx + 1]].max(dim=0).values
             )
         max_psg_scores = torch.stack(max_psg_scores, dim=0)
         final_scores = self.linear_sum(max_psg_scores).squeeze(dim=1)
@@ -122,7 +125,8 @@ class DualSparseEncoder(nn.Module):
         self.doc_encoder.save_pretrained(doc_dir_or_name)
         linear_sum_path = Path(model_dir) / "linear_sum.pt"
         torch.save(self.linear_sum.state_dict(), linear_sum_path)
-        sdm_config = {"window_sizes": self.window_sizes, "proximity": self.proximity}
+        sdm_config = {"window_sizes": self.window_sizes,
+                      "proximity": self.proximity}
         config_path = Path(model_dir) / "config.json"
         json.dump(sdm_config, open(config_path, "w"))
 
@@ -131,10 +135,20 @@ class DualSparseEncoder(nn.Module):
         cls, model_dir_or_name,
     ):
         """Load query and doc encoder from a directory"""
+        if not Path(model_dir_or_name).is_dir():
+            from huggingface_hub import snapshot_download
+            try:
+                snapshot_download(repo_id="lsr42/{model_dir_or_name}",
+                                  local_dir=model_dir_or_name)
+            except:
+                raise Exception(
+                    "wrong model's checkpoint: {model_dir_or_name}")
         query_dir_or_name = f"{model_dir_or_name}/query_encoder"
         doc_dir_or_name = f"{model_dir_or_name}/doc_encoder"
-        query_encoder = TransformerMLPSparseEncoder.from_pretrained(query_dir_or_name)
-        doc_encoder = TransformerMLMSparseEncoder.from_pretrained(doc_dir_or_name)
+        query_encoder = TransformerMLPSparseEncoder.from_pretrained(
+            query_dir_or_name)
+        doc_encoder = TransformerMLMSparseEncoder.from_pretrained(
+            doc_dir_or_name)
         config_path = Path(model_dir_or_name) / "config.json"
         if config_path.is_file():
             sdm_config = json.load(open(config_path, "r"))
