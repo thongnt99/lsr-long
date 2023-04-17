@@ -17,4 +17,4 @@ with open(collection_path, "w", encoding="UTF-8") as f:
 queries_path = robust04_dir/"desc-queries.tsv"
 with open(queries_path, "w", encoding="UTF-8") as f:
     for query in tqdm(dataset.queries_iter()):
-        f.write(f"{query.query_id}\t{query.text}\n")
+        f.write(f"{query.query_id}\t{query.description}\n")
