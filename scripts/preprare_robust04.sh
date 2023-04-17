@@ -6,6 +6,7 @@ mkdir data/trec-robust04/splits
 split --numeric-suffixes=1 --number=l/60 data/trec-robust04/collection.tsv data/trec-robust04/splits/part
 # Split long documents into passages 
 echo "Split long documents into passages"
+mkdir data/trec-robust04/splits_psg
 for f in data/trec-robust04/splits/*;
 do
 echo $f;
