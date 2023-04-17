@@ -7,7 +7,7 @@ split --numeric-suffixes=1 --number=l/60 data/trec-robust04/collection.tsv data/
 echo "Split long documents into passages"
 for f in data/trec-robust04/splits/*;
 do
-echo $f
+echo $f;
 python lsr/long_documents/split_long_documnets.py $f & # remove the & if you want to run sequentially
 done
 echo "Running inference on document passages"
