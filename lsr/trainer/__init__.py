@@ -4,11 +4,6 @@ import os
 from tqdm import tqdm
 import transformers
 import logging
-<<<<<<< HEAD
-from lsr.datasets.data_collator import DataCollator
-from lsr.models.sdm_reranker import DualSparseEncoder
-=======
->>>>>>> 76c8d87c15483e427cc00078b46bf3320282a7ec
 from collections import defaultdict
 from torch.utils.data import Dataset, DataLoader
 import ir_measures
@@ -104,7 +99,8 @@ class HFTrainer(transformers.trainer.Trainer):
             log = {}
             for metric in self.customed_log:
                 log[metric] = (
-                    self._nested_gather(self.customed_log[metric]).mean().item()
+                    self._nested_gather(
+                        self.customed_log[metric]).mean().item()
                 )
                 log[metric] = round(
                     (
