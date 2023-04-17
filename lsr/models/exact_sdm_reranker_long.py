@@ -1,5 +1,4 @@
 from torch import nn
-from lsr.losses import dot_product, num_non_zero
 from lsr.models import TransformerMLMSparseEncoder, TransformerMLPSparseEncoder
 import torch
 from pathlib import Path
