@@ -2,7 +2,6 @@
 defaults:
   - ../dataset@eval_dataset: msmarco_doc_pairs
   - override /dataset@train_dataset: msmarco_doc_triplets
-  - override /loss: triplet_distil_kl
   - override /model: reranker_qmlp_dmlm_long
 exp_name: reranker_qmlp_dmlm_msmarco_doc_ce_5_psg
 train_dataset:
