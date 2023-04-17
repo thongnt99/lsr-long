@@ -27,4 +27,11 @@ Indexing and evaluating
 
 ## ExactSDM and SoftSDM
 
+### ExactSDM 
+* Evaluating on MSMARCO Documents 
+* Evaluating on TREC Robust04
+### SoftSDM
+* Evaluating on MSMARCO Documents 
+* Evaluating on TREC Robust04
+
 
