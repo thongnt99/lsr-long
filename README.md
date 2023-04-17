@@ -1,25 +1,34 @@
-Code for our SIGIR 2023: Adapting Learned Sparse Retrieval to Long Documents
+Code for SIGIR 2023 paper: Adapting Learned Sparse Retrieval to Long Documents
+## Installation 
+Create conda environment 
+```console
+conda create --name lsr python=3.9.12
+conda activate lsr
+```
+Install dependencies
+```console
+pip install -r requirements.txt
+```
+## Downloading and spliting data 
 
-# Prepare datasets 
-
-## Msmarco documents
+* MSMARCO Documents
 ```console
 bash scripts/prepare_msmarco_doc.sh
 ```
 
-## Robust04
+* TREC-Robust04
 
 ```console
 bash scripts/prepare_robust04.sh 
 ```
 
-# Simple aggregation 
-## Running inferences on segments (passages)
+## Simple aggregation 
+Running inferences on segments (passages)
 
-## Aggregating
+Aggregating
 
-## Indexing and evaluating
+Indexing and evaluating
 
-# ExactSDM and SoftSDM
+## ExactSDM and SoftSDM
 
 
