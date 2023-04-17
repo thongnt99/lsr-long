@@ -4,8 +4,11 @@ import os
 from tqdm import tqdm
 import transformers
 import logging
+<<<<<<< HEAD
 from lsr.datasets.data_collator import DataCollator
 from lsr.models.sdm_reranker import DualSparseEncoder
+=======
+>>>>>>> 76c8d87c15483e427cc00078b46bf3320282a7ec
 from collections import defaultdict
 from torch.utils.data import Dataset, DataLoader
 import ir_measures
@@ -22,14 +25,20 @@ class HFTrainer(transformers.trainer.Trainer):
     def __init__(
         self,
         *args,
+<<<<<<< HEAD
         loss=None,
+=======
+>>>>>>> 76c8d87c15483e427cc00078b46bf3320282a7ec
         eval_collator=None,
         data_type="triple",
         train_only_bias_and_layer_norm=False,
         **kwargs,
     ) -> None:
         super(HFTrainer, self).__init__(*args, **kwargs)
+<<<<<<< HEAD
         self.loss = loss
+=======
+>>>>>>> 76c8d87c15483e427cc00078b46bf3320282a7ec
         self.data_type = data_type
         # self.total_q_length = 0
         # self.total_d_length = 0
@@ -88,7 +97,12 @@ class HFTrainer(transformers.trainer.Trainer):
         metrics = ir_measures.calc_aggregate(
             [nDCG @ 10, MRR @ 10, R @ 1000], qrels, rerank_run
         )
+<<<<<<< HEAD
         metrics = {metric_key_prefix + "_" + str(k): v for k, v in metrics.items()}
+=======
+        metrics = {metric_key_prefix + "_" +
+                   str(k): v for k, v in metrics.items()}
+>>>>>>> 76c8d87c15483e427cc00078b46bf3320282a7ec
         metrics["epoch"] = self.state.epoch
         self.log(metrics)
         return metrics
@@ -102,7 +116,12 @@ class HFTrainer(transformers.trainer.Trainer):
             log = {}
             for metric in self.customed_log:
                 log[metric] = (
+<<<<<<< HEAD
                     self._nested_gather(self.customed_log[metric]).mean().item()
+=======
+                    self._nested_gather(
+                        self.customed_log[metric]).mean().item()
+>>>>>>> 76c8d87c15483e427cc00078b46bf3320282a7ec
                 )
                 log[metric] = round(
                     (
@@ -139,12 +158,21 @@ class HFTrainer(transformers.trainer.Trainer):
             optimizer_cls, optimizer_kwargs = super().get_optimizer_cls_and_kwargs(
                 self.args
             )
+<<<<<<< HEAD
             self.optimizer = optimizer_cls(params_to_optimize, **optimizer_kwargs)
+=======
+            self.optimizer = optimizer_cls(
+                params_to_optimize, **optimizer_kwargs)
+>>>>>>> 76c8d87c15483e427cc00078b46bf3320282a7ec
         return self.optimizer
 
     def compute_loss(self, model, inputs, return_outputs=False):
         """Computing loss with diffent formats of training data"""
+<<<<<<< HEAD
         loss_output, q_reg, d_reg, to_log = model(self.loss, **inputs)
+=======
+        loss_output, q_reg, d_reg, to_log = model(**inputs)
+>>>>>>> 76c8d87c15483e427cc00078b46bf3320282a7ec
         for log_metric in to_log:
             self.customed_log[log_metric] += to_log[log_metric]
         return loss_output + q_reg + d_reg
@@ -157,8 +185,11 @@ class HFTrainer(transformers.trainer.Trainer):
         self.model.save_pretrained(model_dir)
         tokenizer_path = os.path.join(model_dir, "tokenizer")
         self.data_collator.tokenizer.save_pretrained(tokenizer_path)
+<<<<<<< HEAD
         loss_path = os.path.join(model_dir, "loss")
         torch.save(self.loss.state_dict(), loss_path)
+=======
+>>>>>>> 76c8d87c15483e427cc00078b46bf3320282a7ec
 
     def _load_from_checkpoint(self, resume_from_checkpoint, model=None):
         """Load from a checkpoint to continue traning"""
@@ -167,5 +198,8 @@ class HFTrainer(transformers.trainer.Trainer):
         self.model.load_state_dict(
             self.model.from_pretrained(resume_from_checkpoint).state_dict()
         )
+<<<<<<< HEAD
         loss_path = os.path.join(resume_from_checkpoint, "loss")
         self.loss.load_state_dict(torch.load(loss_path))
+=======
+>>>>>>> 76c8d87c15483e427cc00078b46bf3320282a7ec

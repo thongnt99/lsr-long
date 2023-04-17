@@ -1,7 +1,11 @@
 _target_: lsr.datasets.multi_psgs_pairs.MultiPSGsPairs
 collection_path: "data/msmarco_doc/collection_psgs.tsv"
 query_path: "data/msmarco_doc/msmarco-docdev-queries.tsv"
+<<<<<<< HEAD
 run_path: "outputs/qmlp_dmlm_distil_sentence_transformer_kl_l1_0.0001/msmarco_doc/run_doc.trec"
+=======
+run_path: "run_files_top200/run_max_score_1.trec"
+>>>>>>> 76c8d87c15483e427cc00078b46bf3320282a7ec
 qrel_path: "data/msmarco_doc/msmarco-docdev-qrels.tsv" 
 top_k: 100
 num_psgs: 1
