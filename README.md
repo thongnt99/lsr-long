@@ -1,12 +1,8 @@
 Code for SIGIR 2023 paper: Adapting Learned Sparse Retrieval to Long Documents
 ## Installation 
-Create conda environment 
 ```console
 conda create --name lsr python=3.9.12
 conda activate lsr
-```
-Install dependencies
-```console
 pip install -r requirements.txt
 ```
 ## Downloading and spliting data 
