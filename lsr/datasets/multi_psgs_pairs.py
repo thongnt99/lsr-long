@@ -60,7 +60,7 @@ class MultiPSGsPairs(Dataset):
         qrel_path: str = "",
         top_k: int = 100,
         num_psgs=2,
-        sep: str = "-",
+        sep: str = "@@",
     ) -> None:
         super().__init__()
         self.docs = defaultdict(dict)
