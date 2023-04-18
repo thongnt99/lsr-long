@@ -61,7 +61,7 @@ class MultiPSGsTriplets(Dataset):
             for line in tqdm(f, desc=f"Reading collection path from {collection_path}"):
                 try:
                     did_pid, ptext = line.strip().split("\t")
-                    did, pid = did_pid.split("-")
+                    did, pid = did_pid.split("@@")
                     self.docs[did][pid] = ptext
                 except:
                     pass
