@@ -119,7 +119,7 @@ class DualSparseEncoder(nn.Module):
         final_scores = self.linear_sum(max_psg_scores).squeeze(dim=1)
         return final_scores
 
-    def forward(self, loss, queries, psgs, psg_offset, labels=None):
+    def forward(self, queries, psgs, psg_offset, labels=None):
         """common forward for both query and document"""
         scores = self.score_pairs(queries, psgs, psg_offset).reshape(-1, 2)
         labels = torch.zeros(scores.size(0), dtype=int, device=scores.device)
