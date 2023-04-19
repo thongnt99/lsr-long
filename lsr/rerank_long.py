@@ -28,7 +28,7 @@ parser.add_argument(
 )
 parser.add_argument(
     "-d",
-    default="data/trec-robust04/docs/collection_psg.tsv",
+    default="data/trec-robust04/collection_psg.tsv",
     type=str,
     help="Path to doc file",
 )
