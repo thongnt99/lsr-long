@@ -55,9 +55,15 @@ parser.add_argument(
 parser.add_argument(
     "-topk", default=100, type=int, help="batch size",
 )
+parser.add_argument("-m", type=str, default="exact", help="exact/soft")
 args = parser.parse_args()
-logger.info("Loading tokenizer and model")
 
+if args.m == "exact":
+    from lsr.models.exact_sdm_reranker_long import DualSparseEncoder
+else:
+    from lsr.models.sdm_reranker_long import DualSparseEncoder
+
+logger.info("Loading tokenizer and model")
 tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
 
 model = DualSparseEncoder.from_pretrained(args.cp).to("cuda:0")
