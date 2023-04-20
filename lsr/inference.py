@@ -18,7 +18,6 @@ parser.add_argument(
 parser.add_argument("--bs", type=int, default=64, help="Output file")
 parser.add_argument("--type", type=str, default="doc", help="query/doc")
 args = parser.parse_args()
-
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model = DualSparseEncoder.from_pretrained(args.cp)
 model.eval()
@@ -47,7 +46,7 @@ for idx in tqdm(range(0, len(ids), args.bs)):
         batch_texts,
         padding=True,
         truncation=True,
-        max_length=512,
+        max_length=400,
         return_special_tokens_mask=True,
         return_tensors="pt",
     ).to(device)
@@ -71,7 +70,6 @@ for idx in tqdm(range(0, len(ids), args.bs)):
             {"id": text_id, "text": text,
                 "vector": dict(zip(tokens, weights)), }
         )
-
 with open(args.out, "w", encoding="UTF-8") as f:
     for result in results_to_file:
         if args.type == "query":
