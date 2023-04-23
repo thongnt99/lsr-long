@@ -14,7 +14,7 @@ if len(sys.argv) > 4:
     sep = sys.argv[4]
 else:
     sep = "-"
-out_path = inp_path.replace("/doc", "/doc_" + aggregation)
+out_path = inp_path.replace("/doc_vectors", "/doc_vectors_" + aggregation)
 with open(inp_path, "r", encoding="UTF-8") as fIn:
     for line in tqdm(fIn, desc=f"Reading collection from: {inp_path}"):
         try:
@@ -38,7 +38,8 @@ with open(out_path, "w", encoding="UTF-8") as fOut:
         elif aggregation == "max":
             for psg_id in psg_ids[:num_psg]:
                 for term in doc_map[doc_id][psg_id]:
-                    vector[term] = max(vector[term], doc_map[doc_id][psg_id][term])
+                    vector[term] = max(
+                        vector[term], doc_map[doc_id][psg_id][term])
         elif aggregation == "sum":
             for psg_id in psg_ids[:num_psg]:
                 for term in doc_map[doc_id][psg_id]:
