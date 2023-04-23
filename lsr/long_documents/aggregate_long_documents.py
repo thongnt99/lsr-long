@@ -13,7 +13,7 @@ num_psg = int(sys.argv[3])
 if len(sys.argv) > 4:
     sep = sys.argv[4]
 else:
-    sep = "-"
+    sep = "@@"
 out_path = inp_path.replace("/doc_vectors", "/doc_vectors_" + aggregation)
 with open(inp_path, "r", encoding="UTF-8") as fIn:
     for line in tqdm(fIn, desc=f"Reading collection from: {inp_path}"):
