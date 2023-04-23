@@ -3,7 +3,7 @@ echo "Exp results" > results.txt
 num_psgs=(7 8 9 10)
 for n in ${num_psgs[@]}; do 
 mkdir data/msmarco_doc/splits_psg_${n}
-for f in data/msmarco_doc/  /* ; do
+for f in data/msmarco_doc/splits_psg/* ; do
     python lsr/preprocess/prepare_bm25.py $f $n & 
     pids="$pids $!"
 done
