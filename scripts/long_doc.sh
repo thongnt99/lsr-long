@@ -1,5 +1,5 @@
 #!/bin/bash
-input_dir=data/msmarco_doc/
+input_dir=data/msmarco_doc
 aggr="mean"
 pids=""
 output_file=${input_dir}/results_${aggr}.txt
