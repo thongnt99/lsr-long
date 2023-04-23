@@ -1,8 +1,9 @@
 from collections import defaultdict
 import json
-
-inp_path = "data/msmarco_doc/collection_psgs.tsv"
-out_path = "data/msmarco_doc/collection_psgs_1.tsv"
+import sys
+from pathlib import Path
+inp_path = sys.argv[2]
+out_path = Path(inp_path.replace("splits_psg", "splits_psg_1") + ".jsonl")
 top_k = 1
 doc2psgs = defaultdict(list)
 with open(inp_path, "r") as f:
