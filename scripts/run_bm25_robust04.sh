@@ -14,7 +14,7 @@ wait $pids
 ../anserini-lsr/target/appassembler/bin/SearchCollection -index indexes/trec-robust04-${n}-bm25 -topics data/trec-robust04/desc-queries.tsv -topicreader TsvInt -output runs/trec-robust04_bm25_${n}.trec -parallelism 60 -bm25 -hits 1000 -bm25 -bm25.k1 0.9 -bm25.b 0.4
 
 echo $n >> results_robust04.txt
-ir_measures data/trec-robust04/robust04.qrels runs/trec-robust04_bm25_${n}.trec MRR@10 R@1000 >> results_robust04.txt
+ir_measures data/trec-robust04/robust04.qrels runs/trec-robust04_bm25_${n}.trec NDCG@10 R@1000 >> results_robust04.txt
 
 unset pids 
 done
