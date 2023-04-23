@@ -8,8 +8,7 @@ num_psg = int(sys.argv[3])
 if len(sys.argv) > 4:
     sep = sys.argv[4]
 else:
-    sep = "-"
-
+    sep = "@@"
 in_list = defaultdict(set)
 with open(inp_path, "r", encoding="UTF-8") as fIn, open(
     out_path, "w", encoding="UTF-8"
