@@ -72,6 +72,8 @@ bash scripts/aggregate_score_msmarco_doc.sh
 * Evaluating on TREC Robust04 (zero-shot)
 ### SoftSDM
 * Estimating weights/Evaluating on MSMARCO Documents 
+Note: using ```+model.window_sizes=[1,2] +model.proximity=8``` generally leads to better performance on MSMARCO document but hurts TREC-Robust04 scores. 
+
 
 | #Passages | MRR@10 | R@1000 | Script | 
 |--------------|--------|--------|---------|
