@@ -21,7 +21,7 @@ bash scripts/prepare_robust04.sh
 ## Simple aggregation 
 To perform aggregation on MSMARCO, follow these steps. For TREC-Robust04, please modify the input and output files accordingly.
 #### 1. Running inferences on segments (passages) and queries:
-- segment inference
+- segment inference (can be distributed on multiple gpus to speed up)
 ```console
 for i in {1..60}
 do
