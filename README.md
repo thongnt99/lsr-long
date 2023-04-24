@@ -80,4 +80,28 @@ bash scripts/aggregate_score_msmarco_doc.sh
 
 * Evaluating on TREC Robust04 (zero-shot)
 
+## Citing and Authors 
+If you find this repository helpful, please cite our following papers:
+- Adapting Learned Sparse Retrieval for Long Documents
+```bibtex
+@inproceedings{nguyen:sigir2023-llsr,
+  author = {Nguyen, Thong and MacAvaney, Sean and Yates, Andrew},
+  title = {Adapting Learned Sparse Retrieval for Long Documents},
+  booktitle = {Proceedings of the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+  year = {2023}
+}
+
+```
+- A Unified Framework for Learned Sparse Retrieval
+```bibtex
+@inproceedings{nguyen2023unified,
+  title={A Unified Framework for Learned Sparse Retrieval},
+  author={Nguyen, Thong and MacAvaney, Sean and Yates, Andrew},
+  booktitle={Advances in Information Retrieval: 45th European Conference on Information Retrieval, ECIR 2023, Dublin, Ireland, April 2--6, 2023, Proceedings, Part III},
+  pages={101--116},
+  year={2023},
+  organization={Springer}
+}
+```
+
 
