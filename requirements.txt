@@ -1,0 +1,17 @@
+huggingface-hub==0.8.1
+hydra-core==1.2.0
+omegaconf==2.2.2
+pytest==7.1.1
+tokenizers==0.12.1
+torch==1.12.0
+torchaudio
+torchmetrics
+torchvision
+transformers==4.20.1
+wandb==0.12.21
+ninja
+tqdm==4.64.0
+tokenizers==0.12.1
+scipy==1.9.1
+datasets==2.4.0
+ir-measures==0.2.3
