@@ -1,10 +1,13 @@
 Code for SIGIR 2023 paper: Adapting Learned Sparse Retrieval to Long Documents
 ## Installation 
+- Python packages
 ```console
 conda create --name lsr python=3.9.12
 conda activate lsr
 pip install -r requirements.txt
 ```
+- Anserini for inverted indexing:  Clone and compile [anserini-lsr](https://github.com/thongnt99/anserini-lsr) which customized Anserini for learned sparse retrieval (adding ```-Dmaven.test.skip=true``` to skip tests).
+
 ## Downloading and spliting data 
 
 * MSMARCO Documents
