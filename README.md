@@ -17,7 +17,11 @@ bash scripts/prepare_msmarco_doc.sh
 ```console
 bash scripts/prepare_robust04.sh 
 ```
-
+## BM25 baselines
+```console
+bash scripts/run_bm25_msmarco.sh 
+bash scripts/run_bm25_robust04.sh 
+```
 ## Simple aggregation 
 To perform aggregation on MSMARCO, follow these steps. For TREC-Robust04, please modify the input and output files accordingly.
 #### 1. Running inferences on segments (passages) and queries:
@@ -62,9 +66,18 @@ bash scripts/aggregate_score_msmarco_doc.sh
 | 4            |  37.03 | 96.71  | ```scripts/train_script_exact_sdm_long_reranker_4_psg.sh``` |  
 | 5            |  36.95 | 96.61  | ```scripts/train_script_exact_sdm_long_reranker_5_psg.sh``` |  
 
-* Evaluating on TREC Robust04
+* Evaluating on TREC Robust04 (zero-shot)
 ### SoftSDM
-* Evaluating on MSMARCO Documents 
-* Evaluating on TREC Robust04
+* Estimating weights/Evaluating on MSMARCO Documents 
+
+| #Passages | MRR@10 | R@1000 | Script | 
+|--------------|--------|--------|---------|
+| 1            |  x | 95.49  | ```scripts/train_script_sdm_long_reranker_1_psg.sh``` |  
+| 2            |  x | 96.51  | ```scripts/train_script_sdm_long_reranker_2_psg.sh``` |  
+| 3            |  x | 96.76  | ```scripts/train_script_sdm_long_reranker_3_psg.sh``` |  
+| 4            |  x | 96.71  | ```scripts/train_script_sdm_long_reranker_4_psg.sh``` |  
+| 5            |  x | 96.61  | ```scripts/train_script_sdm_long_reranker_5_psg.sh``` |  
+
+* Evaluating on TREC Robust04 (zero-shot)
 
 
