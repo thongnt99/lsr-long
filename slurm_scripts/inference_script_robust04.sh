@@ -4,7 +4,7 @@
 #SBATCH --gres gpu:1
 #SBATCH -c 5
 #SBATCH --mem-per-cpu 15000
-#SBATCH -t 0-01:00:00
+#SBATCH -t 0-00:30:00
 #SBATCH -o slurm_scripts/logs/inference_robust04.out
 #SBATCH -e slurm_scripts/logs/inference_robust04.err
 #SBATCH -a 1-60%60
