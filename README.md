@@ -79,11 +79,11 @@ bash scripts/evaluate_exact_sdm_trec_robust04.sh
 
 | #Passages | MRR@10 | R@1000 | Script | 
 |--------------|--------|--------|---------|
-| 1            |  x | 95.49  | ```scripts/train_script_sdm_long_reranker_1_psg.sh``` |  
-| 2            |  x | 96.51  | ```scripts/train_script_sdm_long_reranker_2_psg.sh``` |  
-| 3            |  x | 96.76  | ```scripts/train_script_sdm_long_reranker_3_psg.sh``` |  
-| 4            |  x | 96.71  | ```scripts/train_script_sdm_long_reranker_4_psg.sh``` |  
-| 5            |  x | 96.61  | ```scripts/train_script_sdm_long_reranker_5_psg.sh``` |  
+| 1            |  36.98 | 95.49  | ```scripts/train_script_sdm_long_reranker_1_psg.sh``` |  
+| 2            |  37.53 | 96.51  | ```scripts/train_script_sdm_long_reranker_2_psg.sh``` |  
+| 3            |  37.41 | 96.76  | ```scripts/train_script_sdm_long_reranker_3_psg.sh``` |  
+| 4            |  36.80 | 96.71  | ```scripts/train_script_sdm_long_reranker_4_psg.sh``` |  
+| 5            |  36.79 | 96.61  | ```scripts/train_script_sdm_long_reranker_5_psg.sh``` |  
 
 * Evaluating on TREC Robust04 (zero-shot)
 ```bash 
