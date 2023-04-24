@@ -11,4 +11,4 @@
 eval "$(conda shell.bash hook)"
 # Activate a conda environment:
 conda activate lsr 
-python -m lsr.rerank_long -run data/msmarco_doc/run_max_score_1.trec -q data/msmarco_doc/msmarco-docdev-queries.tsv -d data/msmarco_doc/collection_psgs.tsv -npsg 1 -cp outputs/reranker_exact_qmlp_dmlm_msmarco_doc_ce_1_psg/checkpoint-20000 -qrel data/msmarco_doc/msmarco-docdev-queries.tsv
+python -m lsr.rerank_long -run data/msmarco_doc/run_max_score_1.trec -q data/msmarco_doc/msmarco-docdev-queries.tsv -d data/msmarco_doc/collection_psgs.tsv -npsg 1 -cp outputs/reranker_exact_qmlp_dmlm_msmarco_doc_ce_1_psg/checkpoint-20000 -qrel data/msmarco_doc/msmarco-docdev-qrels.tsv
