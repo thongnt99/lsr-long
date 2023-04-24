@@ -70,6 +70,9 @@ bash scripts/aggregate_score_msmarco_doc.sh
 | 5            |  36.95 | 96.61  | ```scripts/train_script_exact_sdm_long_reranker_5_psg.sh``` |  
 
 * Evaluating on TREC Robust04 (zero-shot)
+```bash 
+bash scripts/evaluate_exact_sdm_trec_robust04.sh
+```
 ### SoftSDM
 * Estimating weights/Evaluating on MSMARCO Documents <br> Note: using ```+model.window_sizes=[1,2] +model.proximity=8``` generally leads to better performance on MSMARCO document but hurts TREC-Robust04 scores.
 
@@ -83,7 +86,9 @@ bash scripts/aggregate_score_msmarco_doc.sh
 | 5            |  x | 96.61  | ```scripts/train_script_sdm_long_reranker_5_psg.sh``` |  
 
 * Evaluating on TREC Robust04 (zero-shot)
-
+```bash 
+bash scripts/evaluate_sdm_trec_robust04.sh
+```
 ## Citing and Authors 
 If you find this repository helpful, please cite our following papers:
 - Adapting Learned Sparse Retrieval for Long Documents
