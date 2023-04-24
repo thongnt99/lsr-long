@@ -7,6 +7,7 @@ from collections import Counter
 import json
 import numpy as np
 import argparse
+from pathlib import Path
 
 parser = argparse.ArgumentParser("Encoding documents")
 parser.add_argument("--inp", type=str,
@@ -18,6 +19,16 @@ parser.add_argument(
 parser.add_argument("--bs", type=int, default=64, help="Output file")
 parser.add_argument("--type", type=str, default="doc", help="query/doc")
 args = parser.parse_args()
+
+if not Path(args.cp).is_dir():
+    from huggingface_hub import snapshot_download
+    try:
+        snapshot_download(repo_id=args.cp,
+                          local_dir=args.cp)
+    except:
+        raise Exception(
+            "wrong model's checkpoint: {model_dir_or_name}")
+
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model = DualSparseEncoder.from_pretrained(args.cp)
 model.eval()
