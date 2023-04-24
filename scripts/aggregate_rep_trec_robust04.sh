@@ -21,7 +21,7 @@ wait $pids
 
 echo $n >> $output_file
 
-ir_measures data/msmarco_doc/msmarco-docdev-qrels.tsv ${input_dir}/run_${aggr}_${n}.trec MRR@10 NDCG@10 R@1000 >> $output_file
+ir_measures trec-robust04 ${input_dir}/run_${aggr}_${n}.trec MRR@10 NDCG@10 R@1000 >> $output_file
 
 unset pids 
 done
