@@ -6,7 +6,7 @@ conda create --name lsr python=3.9.12
 conda activate lsr
 pip install -r requirements.txt
 ```
-- Anserini for inverted indexing:  Clone and compile [anserini-lsr](https://github.com/thongnt99/anserini-lsr) which customized Anserini for learned sparse retrieval (adding ```-Dmaven.test.skip=true``` to skip tests).
+- Anserini for inverted indexing & retrieval:  Clone and compile [anserini-lsr](https://github.com/thongnt99/anserini-lsr), a customized version of Anserini for learned sparse retrieval. When compiling, add ```-Dmaven.test.skip=true``` to skip the tests.
 
 ## Downloading and spliting data 
 
