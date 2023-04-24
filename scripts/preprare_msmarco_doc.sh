@@ -7,9 +7,12 @@ split --numeric-suffixes=1 --number=l/60  data/msmarco_doc/collection.tsv data/m
 # Split long documents into passages 
 echo "Split long documents into passages"
 mkdir -p data/msmarco_doc/splits_psg
+pids=""
 for f in data/msmarco_doc/splits/*;
 do
 echo $f;
 python lsr/long_documents/split_long_documents.py $f & # remove the & if you want to run sequentially
+pids="$pids $!"
 done
-echo "Running inference on document passages"
+wait $pids
+cat data/msmarco_doc/splits/* > data/msmarco_doc/collection_psgs.tsv
