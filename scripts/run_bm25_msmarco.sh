@@ -2,12 +2,13 @@
 echo "Exp results" > results_msmarco_doc_rm3.txt
 num_psgs=(1 2 3 4 5 6 7 8 9 10)
 for n in ${num_psgs[@]}; do 
-# mkdir data/msmarco_doc/splits_psg_${n}
-# for f in data/msmarco_doc/splits_psg/* ; do
-#     python lsr/preprocess/prepare_bm25.py $f $n & 
-#     pids="$pids $!"
-# done
-# wait $pids
+
+mkdir data/msmarco_doc/splits_psg_${n}
+for f in data/msmarco_doc/splits_psg/* ; do
+    python lsr/preprocess/prepare_bm25.py $f $n & 
+    pids="$pids $!"
+done
+wait $pids
 
 ../anserini-lsr/target/appassembler/bin/IndexCollection -collection JsonCollection -input data/msmarco_doc/splits_psg_${n}/ -index indexes/msmarco-doc-${n}-bm25 -generator DefaultLuceneDocumentGenerator -threads 60 -storePositions -storePositions -storeDocvectors -storeRaw
 

@@ -16,3 +16,4 @@ pids="$pid $!"
 done
 wait $pids 
 cat data/trec-robust04/splits/* > data/trec-robust04/collection_psgs.tsv
+unset pids 

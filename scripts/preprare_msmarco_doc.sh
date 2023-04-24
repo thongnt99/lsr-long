@@ -16,3 +16,4 @@ pids="$pids $!"
 done
 wait $pids
 cat data/msmarco_doc/splits/* > data/msmarco_doc/collection_psgs.tsv
+unset pids 
