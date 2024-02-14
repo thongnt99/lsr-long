@@ -1,4 +1,7 @@
+[![DOI](https://zenodo.org/badge/625236818.svg)](https://zenodo.org/doi/10.5281/zenodo.10659505)
+
 Code for SIGIR 2023 paper: Adapting Learned Sparse Retrieval to Long Documents
+
 ## Installation 
 - Python packages
 ```console
